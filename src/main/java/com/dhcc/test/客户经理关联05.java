@@ -43,8 +43,7 @@ public class 客户经理关联05 {
             String  旧的电子账户=accMangeRel.get电子账号();
             String  新的电子账号=ecifTemp.get新的电子账户();
 
-//            未设置
-            String  账户序号=accMangeRel.get账户序号();
+            String  新的账户序号=ecifTemp.get新的账户序号();
 //            提供的csv数据缺少ACC_ID这个列
             String acc_id=ecifTemp.get介质账户ACC_ID();
             String  是否关联客户经理标志=accMangeRel.get是否关联客户经理标志();
@@ -53,7 +52,7 @@ public class 客户经理关联05 {
             String  客户经理名=accMangeRel.get客户经理名();
             //绩效 ACC_MANGE_REL账户客户经理关联表
             String acc_mange_rel="INSERT INTO ACC_MANGE_REL (\"OPN_BR_NO\", \"CIF_NO\", \"ACC_NO\", \"ACC_ID\", \"ACC_SEQN\", \"CIF_MANGE_REL\", \"MANGE_CIF\", \"MANGE_NO\", \"MANGE_NAME\", \"PRDT_NO\") " +
-                    " VALUES ('"+开户机构编码+"', '"+新的客户号+"', '"+新的电子账号+"', '"+acc_id+"', '"+账户序号+"', '"+是否关联客户经理标志+"', "+客户经理客户号+", '"+客户经理编号+"', '"+客户经理名+"', '"+新的产品编号+"');\n";
+                    " VALUES ('"+开户机构编码+"', '"+新的客户号+"', '"+新的电子账号+"', '"+acc_id+"', '"+新的账户序号+"', '"+是否关联客户经理标志+"', "+客户经理客户号+", '"+客户经理编号+"', '"+客户经理名+"', '"+新的产品编号+"');\n";
             stringBuilder.append(acc_mange_rel);
         }
         MyCsvUtil.writFile(stringBuilder.toString(),fileName);

@@ -20,7 +20,7 @@ public class 介质账户关系表02 {
         //获得介质账户关系表sql
         StringBuilder stringBuilder = new StringBuilder();
         //生成客户信息中间表.csv
-        StringBuilder 客户信息中间表 = new StringBuilder("证件号,新的电子账户,新的客户号,介质账户的ACC_ID,旧的电子账户,旧的客户号\n");
+        StringBuilder 客户信息中间表 = new StringBuilder("证件号,新的电子账户,新的客户号,介质账户的ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名,旧的电子账户序号,新的电子账户序号\n");
         getACCSql(ecifs,stringBuilder,客户信息中间表);
         MyCsvUtil.writFile(stringBuilder.toString(),fileName);
         MyCsvUtil.writFile(客户信息中间表.toString(),"客户信息中间表",".csv");
@@ -59,25 +59,29 @@ public class 介质账户关系表02 {
             String 旧的电子账户=row.get电子账号();
             //电子账户为产品工厂的值,暂时未设置
             String 新的电子账户=旧的电子账户;
+            String 旧的电子账户序号="未设置";
+            String 新的电子账户序号="9999";
 
             String 账户状态=row.get账户状态();
             //修改客户信息中间表中的数据
             ecifTemp.set旧的电子账户(旧的电子账户);
             //新的电子账户暂时为设置
             ecifTemp.set新的电子账户(新的电子账户);
+            ecifTemp.set旧的账户序号(旧的电子账户序号);
+            ecifTemp.set新的账户序号(新的电子账户序号);
             String acc_id=acc_id_prefix+acc_id_start;
             ecifTemp.set介质账户ACC_ID(acc_id);
             ecifTemps.put(证件号,ecifTemp);
 
             String mdm_acc_rel = "INSERT INTO MDM_ACC_REL (\"OPN_BR_NO\", \"ACC_NO\", \"ACC_ID\", \"ACC_SEQN\", \"ACC_NAME\", \"CIF_NO\", \"MDM_CODE\", \"NOTE_NO\", \"MDM_STS\", \"COLL_STS\", \"REL_BEG_DATE\", \"REL_END_DATE\", \"PAY_USE_PWD_FLAG\", \"PAY_USE_CERT_FLAG\", \"CERT_TYPE\", \"CERT_NO\", \"PAY_USE_CIPHER_FLAG\", \"MDM_MAIN_FLAG\", \"MDM_MAC\", \"MDM_OPEN_FLAG\", \"MDM_IC_INFO\", \"MDM_EXT_STS\") " +
-                    "VALUES ('"+开户机构号+"', '"+新的电子账户+"', '"+acc_id+"', '9999', '"+客户姓名+"', '"+新的客户编码+"', 'XN01', NULL, '"+账户状态+"', 'CS01', '"+建立日期+"', '99999999', 'UF01', 'UF00', '"+证件类型+"', '"+证件号+"', 'UF00', '9999', NULL, '01', NULL, NULL);\n";
+                    "VALUES ('"+开户机构号+"', '"+新的电子账户+"', '"+acc_id+"', '"+新的电子账户序号+"', '"+客户姓名+"', '"+新的客户编码+"', 'XN01', NULL, '"+账户状态+"', 'CS01', '"+建立日期+"', '99999999', 'UF01', 'UF00', '"+证件类型+"', '"+证件号+"', 'UF00', '9999', NULL, '01', NULL, NULL);\n";
             stringBuilder.append(mdm_acc_rel);
 
         }
         //生成客户信息中间表
         for (EcifTemp  ecifTemp:
              ecifTemps.values()) {
-            客户信息中间表.append(ecifTemp.get证件号()+","+ecifTemp.get新的电子账户()+","+ecifTemp.get新的客户号()+","+ecifTemp.get介质账户ACC_ID()+","+ecifTemp.get旧的电子账户()+","+ecifTemp.get旧的客户号()+"\n");
+            客户信息中间表.append(ecifTemp.get证件号()+","+ecifTemp.get新的电子账户()+","+ecifTemp.get新的客户号()+","+ecifTemp.get介质账户ACC_ID()+","+ecifTemp.get旧的电子账户()+","+ecifTemp.get旧的客户号()+","+ecifTemp.get证件类型()+","+ecifTemp.get客户姓名()+","+ecifTemp.get旧的账户序号()+","+ecifTemp.get新的账户序号()+"\n");
         }
         return  stringBuilder.toString();
     }

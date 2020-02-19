@@ -44,13 +44,14 @@ public class 获得子账户04 {
 //            后面需要修改真是数据，暂时前4列就先直接从csv里面取值
 //            因为ACC_id和AG_ACC_NO都是从介质账户表中取来的，所以从中间表文件中取值
             String 内部账号=ecifTemp.get介质账户ACC_ID();
-//            "AG_ACC_NO",就是电子账户
-            String 内部账号序号=ecifTemp.get新的电子账户();
-            //"AG_ACC_SEQN",
-            String 账卡号="未设置";
+//            "AG_ACC_NO",购卡号,就是电子账户
+            String 新的电子账户=ecifTemp.get新的电子账户();
+            //"AG_ACC_SEQN",账户序号
+//            String 账户序号=subAccount.get账户序号();
+            String 新的账户序号=ecifTemp.get新的账户序号();
+//          acc_seqn  内部账号序号
+            String acc_seqn="未设置";
 //            ACC_SEQN， 这个值的获取可能有问题 待改善 未设置
-            String 账户序号=subAccount.get账户序号();
-
             String 合作机构代码= Constant.机构号;
             String 利率=subAccount.get利率();
             String 起息日期=subAccount.get起息日();
@@ -81,7 +82,7 @@ public class 获得子账户04 {
                     "\"DE_HST_CNT\", \"DE_OPN_DATE\", \"DE_IC_DATE\", \"DE_LAST_DATE\", \"DE_MTR_DATE\", \"DE_ACC_STS\", \"DE_HOLD_STS\", \"DE_HOLD_AMT\", \"DE_STOP_PAY_STS\", \"DE_STOP_PAY_AMT\", \"DE_CTL_AMT\", \"DE_OD_FLAG\", \"DE_CIF_NO\", \"DE_OPEN_FLAG\"," +
                     " \"DE_MAC\", \"DE_INTS_DATE\", \"DE_CIF_LAST_DATE\", " +
                     "\"DE_RATE_TYPE\", \"DE_CASH_FLAG\", \"DE_ACC_TYPE\", \"DE_INTST\", \"DE_UNPAY_INTST\", \"DE_AMT1\", \"DE_AMT2\")" +
-                    " VALUES ('"+内部账号+"', '"+内部账号序号+"', '"+账卡号+"', '"+账户序号+"', '"+合作机构代码+"', '"+合作机构代码+"', '"+现在的产品号+"', '156', '"+账户余额+"', '0', '0', '"+利率+"', " +
+                    " VALUES ('"+内部账号+"', '"+新的电子账户+"', '"+新的账户序号+"', '"+acc_seqn+"', '"+合作机构代码+"', '"+合作机构代码+"', '"+现在的产品号+"', '156', '"+账户余额+"', '0', '0', '"+利率+"', " +
                     "'"+明细笔数+"', '"+开户时间+"', '"+起息日期+"', '"+上笔发生日期 +"', '99991231', '"+账户状态+"', '"+冻结状态+"', '"+冻结金额+"', '"+止付状态+"', '"+止付金额+"', '"+控制金额+"', '"+透支标志+"', " +
                     "'"+客户号+"', '"+开通标志+"', NULL, '"+结息日期+"', '"+最后动账日+"', 'RT00', '"+提现标识+"', '"+账户类型+"', " +
                     "'"+累计收益+"', NULL, NULL, NULL);\n";

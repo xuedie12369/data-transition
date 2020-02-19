@@ -31,10 +31,12 @@ public class TempDateUtil {
             String 介质账户ACC_ID=object[3].toString().trim();
             String 旧的电子账户=object[4].toString().trim();
             String 旧的客户号=object[5].toString().trim();
-            String 证件类型=object[5].toString().trim();
-            String 客户姓名=object[5].toString().trim();
+            String 证件类型=object[6].toString().trim();
+            String 客户姓名=object[7].toString().trim();
+            String 旧的账户序号=object[8].toString().trim();
+            String 新的账户序号=object[9].toString().trim();
 
-            EcifTemp ecifTemp=new EcifTemp(证件号, 新的电子账户, 新的客户号,介质账户ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名);
+            EcifTemp ecifTemp=new EcifTemp(证件号, 新的电子账户, 新的客户号,介质账户ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名,旧的账户序号,新的账户序号);
             ecifTempHashMap.put(证件号,ecifTemp);
         }
         return ecifTempHashMap;

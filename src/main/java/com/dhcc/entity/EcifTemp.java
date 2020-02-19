@@ -9,6 +9,9 @@ public class EcifTemp {
     String 旧的客户号;
     String 证件类型;
     String 客户姓名;
+    String 旧的账户序号;
+    String 新的账户序号;
+
 
 
     public String get证件号() {
@@ -79,7 +82,23 @@ public class EcifTemp {
         this.客户姓名 = 客户姓名;
     }
 
-    public EcifTemp(String 证件号, String 新的电子账户, String 新的客户号, String 介质账户ACC_ID, String 旧的电子账户, String 旧的客户号, String 证件类型, String 客户姓名) {
+    public String get旧的账户序号() {
+        return 旧的账户序号;
+    }
+
+    public void set旧的账户序号(String 旧的账户序号) {
+        this.旧的账户序号 = 旧的账户序号;
+    }
+
+    public String get新的账户序号() {
+        return 新的账户序号;
+    }
+
+    public void set新的账户序号(String 新的账户序号) {
+        this.新的账户序号 = 新的账户序号;
+    }
+
+    public EcifTemp(String 证件号, String 新的电子账户, String 新的客户号, String 介质账户ACC_ID, String 旧的电子账户, String 旧的客户号, String 证件类型, String 客户姓名, String 旧的账户序号, String 新的账户序号) {
         this.证件号 = 证件号;
         this.新的电子账户 = 新的电子账户;
         this.新的客户号 = 新的客户号;
@@ -88,5 +107,7 @@ public class EcifTemp {
         this.旧的客户号 = 旧的客户号;
         this.证件类型 = 证件类型;
         this.客户姓名 = 客户姓名;
+        this.旧的账户序号 = 旧的账户序号;
+        this.新的账户序号 = 新的账户序号;
     }
 }

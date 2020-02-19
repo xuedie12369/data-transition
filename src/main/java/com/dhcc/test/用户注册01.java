@@ -45,7 +45,7 @@ public class 用户注册01 {
         //注册信息表sql
         StringBuilder stringBuilder = new StringBuilder();
         //生成客户信息中间表.csv
-        StringBuilder 客户信息中间表 = new StringBuilder("证件号,新的电子账户,新的客户号,介质账户的ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名\n");
+        StringBuilder 客户信息中间表 = new StringBuilder("证件号,新的电子账户,新的客户号,介质账户的ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名,旧的电子账户序号,新的电子账户序号\n");
         getSQL(ecifs,stringBuilder,客户信息中间表);
         MyCsvUtil.writFile(stringBuilder.toString(),fileName);
         MyCsvUtil.writFile(客户信息中间表.toString(),"客户信息中间表",".csv");
@@ -138,7 +138,7 @@ public class 用户注册01 {
                     .append(ecif_per_cont_info)
                     .append(ecif_pwd_info)
                     .append("\n");
-            String temp=证件号+","+"新的电子账户未设置"+","+新的客户编码+","+"介质账户的ACC_ID未设置"+","+"旧的电子账户未设置"+","+旧的客户编码+","+证件类型+","+客户姓名+"\n";
+            String temp=证件号+","+"新的电子账户未设置"+","+新的客户编码+","+"介质账户的ACC_ID未设置"+","+"旧的电子账户未设置"+","+旧的客户编码+","+证件类型+","+客户姓名+","+"未设置"+","+"未设置"+"\n";
             客户信息中间表.append(temp);
         }
         stringBuilder.append("UPDATE ECIF_NO_CTL set cif_no_seqn = '" + start + "' where br_no = '"+Constant.机构号+"' and cif_type = 'CT01';\n");
