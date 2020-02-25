@@ -14,19 +14,13 @@ import java.util.List;
 public class MyCsvUtil {
 
     public static List<CsvRow> getData(String fileName) {
-/*        try {
-            fileName = URLDecoder.decode(MyCsvUtil.class.getClassLoader().getResource(fileName).getPath(), "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }*/
       String localFile = "C:\\" + fileName;
-//        String localFile = fileName;
         File file = FileUtil.file(localFile);
         if (!file.exists()) {
             throw new RuntimeException("文件不存在：" + localFile);
         }
         CsvReader reader = CsvUtil.getReader();
-        CsvData data = reader.read(file, /*CharsetUtil.CHARSET_UTF_8*/CharsetUtil.CHARSET_UTF_8);
+        CsvData data = reader.read(file, CharsetUtil.CHARSET_UTF_8);
         List<CsvRow> rows = data.getRows();
         return rows;
     }

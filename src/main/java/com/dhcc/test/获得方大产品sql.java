@@ -1,37 +1,28 @@
 package com.dhcc.test;
 
 
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.text.csv.CsvData;
-import cn.hutool.core.text.csv.CsvReader;
 import cn.hutool.core.text.csv.CsvRow;
-import cn.hutool.core.text.csv.CsvUtil;
-import cn.hutool.core.util.CharsetUtil;
 import com.dhcc.entity.Product;
 import com.dhcc.util.MyCsvUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class 获得方大产品sql {
-    public static List<CsvRow> getData(String fileName) {
-        String localFile = "C:\\" + fileName;
-        File file = FileUtil.file(localFile);
-        if (!file.exists()) {
-            throw new RuntimeException("文件不存在：" + localFile);
-        }
-        CsvReader reader = CsvUtil.getReader();
-        CsvData data = reader.read(file, /*CharsetUtil.CHARSET_UTF_8*/CharsetUtil.CHARSET_GBK);
-        List<CsvRow> rows = data.getRows();
-        return rows;
-    }
+
     public static void main(String[] args) {
         String fileName = "十年庆3个.csv";
-
         List<CsvRow> rows =   MyCsvUtil.getData(fileName);
         rows.remove(0);
-        List<Product> products = new ArrayList<>();
+        List<Product> products =toProducts(rows);
+        StringBuilder stringBuilder=new StringBuilder();
+        for (Product product: products) {
+            stringBuilder.append(getBaseSql(product));
+        }
+        MyCsvUtil.writFile(stringBuilder.toString(),fileName);
+    }
+    public static List<Product> toProducts(List<CsvRow>  rows){
+        List<Product> products=new ArrayList<>(rows.size());
         String chnnl;
         //        产品名称
         String prdtName;
@@ -45,9 +36,8 @@ public class 获得方大产品sql {
         String opn_min_amt;
         //        发售期
         String fashouqi;
-//        发售期单位
+        //   发售期单位
         String fashouqiUnit;
-        //        发售期
         //        利率
         String rate;
         //      计息规则
@@ -60,40 +50,36 @@ public class 获得方大产品sql {
         String draw_adva_flag;
         String brNo;
         String gcNo;
-        StringBuffer stringBuffer=new StringBuffer();
         for (CsvRow csvRow : rows) {
             Object[] object = csvRow.toArray();
             chnnl = object[0].toString().trim();
             prdtName = object[1].toString().trim();
-            prdtNo  =object[2].toString().trim();
-            gcNo=object[3].toString().trim();
+            prdtNo = object[2].toString().trim();
+            gcNo = object[3].toString().trim();
             产品类型 = object[4].toString().trim();
             de_term = object[5].toString().trim();
-            de_termUnit=object[6].toString().trim();
+            de_termUnit = object[6].toString().trim();
             opn_min_amt = object[7].toString().trim();
             fashouqi = object[8].toString().trim();
             fashouqiUnit = object[9].toString().trim();
-            rate = object[10].toString().replace("%","").trim();
+            rate = object[10].toString().replace("%", "").trim();
             rule = object[11].toString().trim();
 
             opn_unit_amt = object[12].toString().trim();
             tfr_lmt_type = object[13].toString().trim();
             draw_adva_flag = object[14].toString().trim();
-            brNo=object[15].toString().trim();
-            Product product = new Product( chnnl,  prdtName,  prdtNo,  gcNo,  产品类型, de_term, 
-                     de_termUnit,  opn_min_amt,  fashouqi,  fashouqiUnit,  rate,  rule,
-                     opn_unit_amt,  tfr_lmt_type, draw_adva_flag,  brNo);
+            brNo = object[15].toString().trim();
+            Product product = new Product(chnnl, prdtName, prdtNo, gcNo, 产品类型, de_term,
+                    de_termUnit, opn_min_amt, fashouqi, fashouqiUnit, rate, rule,
+                    opn_unit_amt, tfr_lmt_type, draw_adva_flag, brNo);
             product.set存款类型(object[16].toString().trim());
-            //获得 产品信息的sql
-            stringBuffer.append(getBaseSql(product));
-//            stringBuffer.append(getPRDT_PROX_BR_REL(product));
-//            stringBuffer.append(getPRDT_MDM_RELandPRDT_RECO(product));
+            products.add(product);
         }
-//        System.out.println(stringBuffer);
-        MyCsvUtil.writFile(stringBuffer.toString(),fileName);
+
+        return products;
     }
-    public static StringBuffer getBaseSql(Product product) {
-        StringBuffer stringBuffer = new StringBuffer();
+    public static StringBuilder getBaseSql(Product product) {
+        StringBuilder stringBuilder = new StringBuilder();
         String chnnl=product.getChnnl();
         //        产品名称
         String prdtName=product.getPrdtName();
@@ -243,21 +229,21 @@ public class 获得方大产品sql {
                 "INSERT INTO PRDT_BR_REL (PRDT_NO, BR_NO, BEG_DATE, BEG_TIME, END_DATE, END_TIME) VALUES ('"+prdtNo+"', '"+brNo+"', '20190601', '000000', '20990101', '235959');\n"+
                 "INSERT INTO PRDT_RECO (RE_NO, PRDT_CLS, POS_NO, PRDT_NO, DATE_BEG, DATE_END, RECO_WEIG, RE_STS, CRT_USER, CRT_DATE, RECO_TYPE, BR_NO, RECO_ID) VALUES ('2', 'P00034', null, '"+prdtNo+"' , '20170507', '20990507', 2, 'RS00', null, null, 'RT01', '"+brNo+"', '5');\n" +
                 "INSERT INTO PRDT_MDM_REL (PRDT_NO, MDM_CODE, BEG_DATE, BEG_TIME, END_DATE, END_TIME, BR_NO) VALUES ('"+prdtNo+"', 'EM01', '20170304', '000000', '20990101', '235959', '"+prdtNo+"');\n";
-        stringBuffer.append(basesql);
-        return stringBuffer;
+        stringBuilder.append(basesql);
+        return stringBuilder;
     }
 
-    public static StringBuffer getPRDT_PROX_BR_REL(Product product){
+    public static StringBuilder getPRDT_PROX_BR_REL(Product product){
         String prdtNo=product.getPrdtNo();
         String gcNo=product.getGcNo();
         String prdtName=product.getPrdtName();
         String brNo=product.getBrNo();
         String str="INSERT INTO PRDT_PROX_BR_REL (PRDT_NO, PBR_PRDT_NO, PBR_PRDT_NAME, PB_NO, PBR_PROT_TYPE, PBR_PROF_MODE, PBR_PROF_RADI, PBR_DESC, PBR_PROT_FILE, BR_NO) VALUES ('"+prdtNo+"', '"+gcNo+"', '"+prdtName+"', null, null, null, null, null, null, '"+brNo+"');\n";
-        StringBuffer stringBuffer=new StringBuffer(str);
-    return stringBuffer;
+        StringBuilder stringBuilder=new StringBuilder(str);
+    return stringBuilder;
     }
 
-    public static StringBuffer getPRDT_MDM_RELandPRDT_RECO(Product product){
+    public static StringBuilder getPRDT_MDM_RELandPRDT_RECO(Product product){
         String prdtNo=product.getPrdtNo();
         String gcNo=product.getGcNo();
         String prdtName=product.getPrdtName();
@@ -265,7 +251,7 @@ public class 获得方大产品sql {
         String str=
 //                "INSERT INTO PRDT_RECO (RE_NO, PRDT_CLS, POS_NO, PRDT_NO, DATE_BEG, DATE_END, RECO_WEIG, RE_STS, CRT_USER, CRT_DATE, RECO_TYPE, BR_NO, RECO_ID) VALUES ('2', 'P00034', null, '"+prdtNo+"', , '20170507', '20990507', 2, 'RS00', null, null, 'RT01', '"+brNo+"', '5');\n";
                    "INSERT INTO PRDT_MDM_REL (PRDT_NO, MDM_CODE, BEG_DATE, BEG_TIME, END_DATE, END_TIME, BR_NO) VALUES ('"+prdtNo+"', 'EM01', '20170304', '000000', '20990101', '235959', '"+prdtNo+"');\n";
-        StringBuffer stringBuffer=new StringBuffer(str);
-        return stringBuffer;
+        StringBuilder stringBuilder=new StringBuilder(str);
+        return stringBuilder;
     }
 }
