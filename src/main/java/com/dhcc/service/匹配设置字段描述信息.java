@@ -4,6 +4,8 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.text.csv.CsvRow;
+import cn.hutool.poi.excel.ExcelUtil;
+import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.core.toolkit.ArrayUtils;
 import com.dhcc.entity.FiledJieGou;
 import com.dhcc.entity.FinishedData;
@@ -71,7 +73,7 @@ public class 匹配设置字段描述信息 {
     }
 
     public static void wr(String path) {
-//        ExcelWriter writer = ExcelUtil.getWriter(path);
+        ExcelWriter writer = ExcelUtil.getWriter(path);
 
     }
     public static List toTarTT_LR_COMPANY(List<CsvRow> datas) {
