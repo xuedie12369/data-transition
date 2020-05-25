@@ -14,7 +14,7 @@ import java.util.List;
 public class MyCsvUtil {
 
     public static List<CsvRow> getData(String fileName) {
-      String localFile = "C:\\" + fileName;
+      String localFile = "D:\\" + fileName;
         File file = FileUtil.file(localFile);
         if (!file.exists()) {
             throw new RuntimeException("文件不存在：" + localFile);
@@ -27,18 +27,22 @@ public class MyCsvUtil {
 
     public static void writFile(String string, String fileName) {
         fileName=fileName.substring(0,fileName.lastIndexOf("."));
-        String path = "c:\\" + fileName + ".sql";
+        String path = "D:\\" + fileName + ".sql";
         FileWriter writer = new FileWriter(path,CharsetUtil.CHARSET_UTF_8);
         writer.write(string);
         System.out.println("写入文件成功：" + path);
     }
     public static void writFile(String string, String fileName,String fileSuffix) {
-        String path = "c:\\" + fileName + fileSuffix;
+        String path = "D:\\" + fileName + fileSuffix;
         FileWriter writer = new FileWriter(path,CharsetUtil.CHARSET_UTF_8);
         writer.write(string);
         System.out.println("写入文件成功：" + path);
     }
-
+    public static void writFile1(String string,String path) {
+        FileWriter writer = new FileWriter(path,CharsetUtil.CHARSET_UTF_8);
+        writer.write(string);
+        System.out.println("写入文件成功：" + path);
+    }
     public static void main(String[] args) {
         writFile("123", "1");
     }

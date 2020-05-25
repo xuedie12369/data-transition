@@ -41,9 +41,9 @@ public class 用户注册01 {
         String fileName= "过渡电子账户部分客户信息.csv";
         List<CsvRow> rows = MyCsvUtil.getData(fileName);
         rows.remove(0);
-        List<Ecif> ecifs = toEcifList(rows);
         //注册信息表sql
         StringBuilder stringBuilder = new StringBuilder();
+        List<Ecif> ecifs = toEcifList(rows);
         //生成客户信息中间表.csv
         StringBuilder 客户信息中间表 = new StringBuilder("证件号,新的电子账户,新的客户号,介质账户的ACC_ID,旧的电子账户,旧的客户号,证件类型,客户姓名,旧的电子账户序号,新的电子账户序号\n");
         getSQL(ecifs,stringBuilder,客户信息中间表);
