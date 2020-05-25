@@ -29,9 +29,9 @@ public class 匹配设置字段描述信息 {
 
     public static void main(String[] args) {
         String resourceRoot = "C:\\Users\\孙\\Desktop\\原信息\\";
-        getFilePath(resourceRoot);
+        List<String> finames = getFilePath(resourceRoot);
         for (String fileName :
-                getFilePath(resourceRoot)) {
+                finames) {
 
             List<CsvRow> resourceDatas = MyCsvUtil.getDataByPath(resourceRoot + fileName);
             resourceDatas.remove(0);
@@ -45,7 +45,6 @@ public class 匹配设置字段描述信息 {
             targetDatas.remove(0);
 
             List<TT_LR_COMPANY> targetList = toTarTT_LR_COMPANY(targetDatas);
-//        System.out.println(targetList);
             targetList.forEach(p -> {
                 TT_LR_COMPANY tt_lr_company = (TT_LR_COMPANY) map.get(p.get字段名());
                 if (tt_lr_company != null) {
@@ -54,30 +53,25 @@ public class 匹配设置字段描述信息 {
                 }
             });
 
-            StringBuilder stringBuilder = new StringBuilder("表名称：" + fileName + "\r\n");
-            stringBuilder.append("字段名称,类型,字段描述,备注\r\n");
-            List<List<String>> rows=new ArrayList<>();
+            StringBuilder stringBuilder = new StringBuilder("表名称：" + fileName);
+            List<List<String>> rows = new ArrayList<>();
+            rows.add(CollUtil.newArrayList("表名称：" + fileName + "\r\n"));
+            rows.add(CollUtil.newArrayList("字段名称", "类型", "字段描述", "备注"));
             targetList.forEach(p -> {
 //                stringBuilder.append(p.get字段名() + "," + p.get字段类型() + "," + p.get字段描述() + "," + p.get备注() + "\r\n");
 
-                List<String> row1 = CollUtil.newArrayList(p.get字段名(),  p.get字段类型(), p.get字段描述(),  p.get备注());
+                List<String> row1 = CollUtil.newArrayList(p.get字段名(), p.get字段类型(), p.get字段描述(), p.get备注());
                 rows.add(row1);
             });
-            System.out.println(stringBuilder);
 
-            MyCsvUtil.writFile1(stringBuilder.toString(), "D:\\final\\"+fileName);
-            writer("D:\\final\\"+fileName,rows);
+//            MyCsvUtil.writFile1(stringBuilder.toString(), "D:\\final\\" + fileName);
+            MyCsvUtil.writerXlsx("D:\\final\\", fileName, rows);
         }
 
 
     }
 
-    public static void writer(String path,List<List<String>> rows) {
-        ExcelWriter writer = ExcelUtil.getWriter(path);
-        writer.merge(4,"标题");
-        writer.write(rows,true);
-        writer.close();
-    }
+
     public static List toTarTT_LR_COMPANY(List<CsvRow> datas) {
         List list = new ArrayList<TT_LR_COMPANY>(datas.size());
         for (CsvRow row : datas) {
