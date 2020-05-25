@@ -66,15 +66,17 @@ public class 匹配设置字段描述信息 {
             System.out.println(stringBuilder);
 
             MyCsvUtil.writFile1(stringBuilder.toString(), "D:\\final\\"+fileName);
-
+            writer("D:\\final\\"+fileName,rows);
         }
 
 
     }
 
-    public static void wr(String path) {
+    public static void writer(String path,List<List<String>> rows) {
         ExcelWriter writer = ExcelUtil.getWriter(path);
-
+        writer.merge(4,"标题");
+        writer.write(rows,true);
+        writer.close();
     }
     public static List toTarTT_LR_COMPANY(List<CsvRow> datas) {
         List list = new ArrayList<TT_LR_COMPANY>(datas.size());
