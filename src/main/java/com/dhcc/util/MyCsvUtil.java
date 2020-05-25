@@ -25,6 +25,18 @@ public class MyCsvUtil {
         return rows;
     }
 
+
+    public static List<CsvRow> getDataByPath(String path) {
+        File file = FileUtil.file(path);
+        if (!file.exists()) {
+            throw new RuntimeException("文件不存在：" + path);
+        }
+        CsvReader reader = CsvUtil.getReader();
+        CsvData data = reader.read(file, CharsetUtil.CHARSET_UTF_8);
+        List<CsvRow> rows = data.getRows();
+        return rows;
+    }
+
     public static void writFile(String string, String fileName) {
         fileName=fileName.substring(0,fileName.lastIndexOf("."));
         String path = "D:\\" + fileName + ".sql";
