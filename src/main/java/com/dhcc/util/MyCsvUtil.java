@@ -65,6 +65,12 @@ public class MyCsvUtil {
         fileName = fileName.substring(0, fileName.lastIndexOf("."));
         ExcelWriter writer = ExcelUtil.getWriter(path + fileName + ".xlsx");
         writer.write(rows, false);
+        writer.setColumnWidth(0,30);
+
+        writer.setColumnWidth(1,30);
+        writer.setColumnWidth(2,30);
+        writer.setColumnWidth(3,50);
+
         writer.close();
 
         System.out.println("写入文件成功：" + path+fileName + ".xlsx");
