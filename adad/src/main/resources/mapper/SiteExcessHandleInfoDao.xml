@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dhcc.dao.SiteExcessHandleInfoDao">
+
+    <resultMap type="com.dhcc.entity.SiteExcessHandleInfo" id="SiteExcessHandleInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="collectTime" column="collect_time" jdbcType="TIMESTAMP"/>
+        <result property="isTrue" column="is_true" jdbcType="INTEGER"/>
+        <result property="punishType" column="punish_type" jdbcType="VARCHAR"/>
+        <result property="punishContent" column="punish_content" jdbcType="VARCHAR"/>
+        <result property="handleImage" column="handle_image" jdbcType="VARCHAR"/>
+        <result property="excessReason" column="excess_reason" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="siteExcessCensusId" column="site_excess_census_id" jdbcType="INTEGER"/>
+        <result property="backup1" column="backup1" jdbcType="VARCHAR"/>
+        <result property="backup2" column="backup2" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SiteExcessHandleInfoMap">
+        select
+          id, gmt_create, gmt_modified, status, collect_time, is_true, punish_type, punish_content, handle_image, excess_reason, remark, username, site_excess_census_id, backup1, backup2
+        from hbbd_monitor_source.site_excess_handle_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SiteExcessHandleInfoMap">
+        select
+          id, gmt_create, gmt_modified, status, collect_time, is_true, punish_type, punish_content, handle_image, excess_reason, remark, username, site_excess_census_id, backup1, backup2
+        from hbbd_monitor_source.site_excess_handle_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SiteExcessHandleInfoMap">
+        select
+          id, gmt_create, gmt_modified, status, collect_time, is_true, punish_type, punish_content, handle_image, excess_reason, remark, username, site_excess_census_id, backup1, backup2
+        from hbbd_monitor_source.site_excess_handle_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="gmtCreate != null">
+                and gmt_create = #{gmtCreate}
+            </if>
+            <if test="gmtModified != null">
+                and gmt_modified = #{gmtModified}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="collectTime != null">
+                and collect_time = #{collectTime}
+            </if>
+            <if test="isTrue != null">
+                and is_true = #{isTrue}
+            </if>
+            <if test="punishType != null and punishType != ''">
+                and punish_type = #{punishType}
+            </if>
+            <if test="punishContent != null and punishContent != ''">
+                and punish_content = #{punishContent}
+            </if>
+            <if test="handleImage != null and handleImage != ''">
+                and handle_image = #{handleImage}
+            </if>
+            <if test="excessReason != null and excessReason != ''">
+                and excess_reason = #{excessReason}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="siteExcessCensusId != null">
+                and site_excess_census_id = #{siteExcessCensusId}
+            </if>
+            <if test="backup1 != null and backup1 != ''">
+                and backup1 = #{backup1}
+            </if>
+            <if test="backup2 != null and backup2 != ''">
+                and backup2 = #{backup2}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into hbbd_monitor_source.site_excess_handle_info(gmt_create, gmt_modified, status, collect_time, is_true, punish_type, punish_content, handle_image, excess_reason, remark, username, site_excess_census_id, backup1, backup2)
+        values (#{gmtCreate}, #{gmtModified}, #{status}, #{collectTime}, #{isTrue}, #{punishType}, #{punishContent}, #{handleImage}, #{excessReason}, #{remark}, #{username}, #{siteExcessCensusId}, #{backup1}, #{backup2})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update hbbd_monitor_source.site_excess_handle_info
+        <set>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="collectTime != null">
+                collect_time = #{collectTime},
+            </if>
+            <if test="isTrue != null">
+                is_true = #{isTrue},
+            </if>
+            <if test="punishType != null and punishType != ''">
+                punish_type = #{punishType},
+            </if>
+            <if test="punishContent != null and punishContent != ''">
+                punish_content = #{punishContent},
+            </if>
+            <if test="handleImage != null and handleImage != ''">
+                handle_image = #{handleImage},
+            </if>
+            <if test="excessReason != null and excessReason != ''">
+                excess_reason = #{excessReason},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="siteExcessCensusId != null">
+                site_excess_census_id = #{siteExcessCensusId},
+            </if>
+            <if test="backup1 != null and backup1 != ''">
+                backup1 = #{backup1},
+            </if>
+            <if test="backup2 != null and backup2 != ''">
+                backup2 = #{backup2},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from hbbd_monitor_source.site_excess_handle_info where id = #{id}
+    </delete>
+
+</mapper>
