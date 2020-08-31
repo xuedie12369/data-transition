@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dhcc.orcal.dao.TtLrCompanyDao">
+
+    <resultMap id="BaseResultMap" type="com.dhcc.orcal.entity.TtLrCompany">
+        <!--@Table TT_LR_COMPANY-->
+        <result property="instanceid" column="INSTANCEID" jdbcType="VARCHAR"/>
+        <result property="companyId" column="COMPANY_ID" jdbcType="OTHER"/>
+        <result property="requestNo" column="REQUEST_NO" jdbcType="OTHER"/>
+        <result property="responseNo" column="RESPONSE_NO" jdbcType="OTHER"/>
+        <result property="passNo" column="PASS_NO" jdbcType="OTHER"/>
+        <result property="name" column="NAME" jdbcType="OTHER"/>
+        <result property="province" column="PROVINCE" jdbcType="OTHER"/>
+        <result property="city" column="CITY" jdbcType="OTHER"/>
+        <result property="district" column="DISTRICT" jdbcType="OTHER"/>
+        <result property="registAddr" column="REGIST_ADDR" jdbcType="OTHER"/>
+        <result property="registAddrPost" column="REGIST_ADDR_POST" jdbcType="OTHER"/>
+        <result property="contactAddr" column="CONTACT_ADDR" jdbcType="OTHER"/>
+        <result property="contactAddrPost" column="CONTACT_ADDR_POST" jdbcType="OTHER"/>
+        <result property="contactPerson" column="CONTACT_PERSON" jdbcType="OTHER"/>
+        <result property="contactPhone" column="CONTACT_PHONE" jdbcType="OTHER"/>
+        <result property="longitude" column="LONGITUDE" jdbcType="NUMERIC"/>
+        <result property="longitudeHour" column="LONGITUDE_HOUR" jdbcType="NUMERIC"/>
+        <result property="longitudeSecond" column="LONGITUDE_SECOND" jdbcType="NUMERIC"/>
+        <result property="latitude" column="LATITUDE" jdbcType="NUMERIC"/>
+        <result property="latitudeHour" column="LATITUDE_HOUR" jdbcType="NUMERIC"/>
+        <result property="latitudeSecond" column="LATITUDE_SECOND" jdbcType="NUMERIC"/>
+        <result property="legalPerson" column="LEGAL_PERSON" jdbcType="OTHER"/>
+        <result property="legalPersonType" column="LEGAL_PERSON_TYPE" jdbcType="OTHER"/>
+        <result property="legalPersonId" column="LEGAL_PERSON_ID" jdbcType="OTHER"/>
+        <result property="legalPersonPhone" column="LEGAL_PERSON_PHONE" jdbcType="OTHER"/>
+        <result property="kind" column="KIND" jdbcType="OTHER"/>
+        <result property="industryType" column="INDUSTRY_TYPE" jdbcType="OTHER"/>
+        <result property="nuclideProduceActive" column="NUCLIDE_PRODUCE_ACTIVE" jdbcType="OTHER"/>
+        <result property="nuclideSaleActive" column="NUCLIDE_SALE_ACTIVE" jdbcType="OTHER"/>
+        <result property="nuclideUseActive" column="NUCLIDE_USE_ACTIVE" jdbcType="OTHER"/>
+        <result property="radialProduceActive" column="RADIAL_PRODUCE_ACTIVE" jdbcType="OTHER"/>
+        <result property="radialSaleActive" column="RADIAL_SALE_ACTIVE" jdbcType="OTHER"/>
+        <result property="radialUseActive" column="RADIAL_USE_ACTIVE" jdbcType="OTHER"/>
+        <result property="radialSaleAndProduce" column="RADIAL_SALE_AND_PRODUCE" jdbcType="OTHER"/>
+        <result property="nonSealActive" column="NON_SEAL_ACTIVE" jdbcType="OTHER"/>
+        <result property="nonSealType" column="NON_SEAL_TYPE" jdbcType="OTHER"/>
+        <result property="useAndCollection" column="USE_AND_COLLECTION" jdbcType="OTHER"/>
+        <result property="radialOrgname" column="RADIAL_ORGNAME" jdbcType="OTHER"/>
+        <result property="radialOrgcontactPerson" column="RADIAL_ORGCONTACT_PERSON" jdbcType="OTHER"/>
+        <result property="radialOrgcontactPhone" column="RADIAL_ORGCONTACT_PHONE" jdbcType="OTHER"/>
+        <result property="radialOrgcontactMobile" column="RADIAL_ORGCONTACT_MOBILE" jdbcType="OTHER"/>
+        <result property="radialOrgcontactFax" column="RADIAL_ORGCONTACT_FAX" jdbcType="OTHER"/>
+        <result property="radialOrgcontactEmail" column="RADIAL_ORGCONTACT_EMAIL" jdbcType="OTHER"/>
+        <result property="organizationCode" column="ORGANIZATION_CODE" jdbcType="OTHER"/>
+        <result property="remark" column="REMARK" jdbcType="OTHER"/>
+        <result property="responseStatus" column="RESPONSE_STATUS" jdbcType="NUMERIC"/>
+        <result property="permission" column="PERMISSION" jdbcType="OTHER"/>
+        <result property="isDelete" column="IS_DELETE" jdbcType="OTHER"/>
+        <result property="insertUser" column="INSERT_USER" jdbcType="OTHER"/>
+        <result property="insertDate" column="INSERT_DATE" jdbcType="OTHER"/>
+        <result property="modifyUser" column="MODIFY_USER" jdbcType="OTHER"/>
+        <result property="modifyDate" column="MODIFY_DATE" jdbcType="OTHER"/>
+        <result property="isApply" column="IS_APPLY" jdbcType="OTHER"/>
+        <result property="licenseIssueOrgan" column="LICENSE_ISSUE_ORGAN" jdbcType="OTHER"/>
+        <result property="licenseStartdate" column="LICENSE_STARTDATE" jdbcType="OTHER"/>
+        <result property="licenseNo" column="LICENSE_NO" jdbcType="OTHER"/>
+        <result property="licenseEnddate" column="LICENSE_ENDDATE" jdbcType="OTHER"/>
+        <result property="licenceIssuingAuthority" column="LICENCE_ISSUING_AUTHORITY" jdbcType="OTHER"/>
+        <result property="licenseType" column="LICENSE_TYPE" jdbcType="OTHER"/>
+        <result property="bePass" column="BE_PASS" jdbcType="OTHER"/>
+        <result property="nopassReason" column="NOPASS_REASON" jdbcType="OTHER"/>
+        <result property="requestSource" column="REQUEST_SOURCE" jdbcType="OTHER"/>
+        <result property="requestSourceId" column="REQUEST_SOURCE_ID" jdbcType="OTHER"/>
+        <result property="moduleNumber" column="MODULE_NUMBER" jdbcType="OTHER"/>
+        <result property="fax" column="FAX" jdbcType="OTHER"/>
+        <result property="email" column="EMAIL" jdbcType="OTHER"/>
+        <result property="companyType" column="COMPANY_TYPE" jdbcType="OTHER"/>
+        <result property="licenseCondition" column="LICENSE_CONDITION" jdbcType="OTHER"/>
+        <result property="status" column="STATUS" jdbcType="OTHER"/>
+        <result property="licenseStartDate" column="LICENSE_START_DATE" jdbcType="OTHER"/>
+        <result property="licenseEndDate" column="LICENSE_END_DATE" jdbcType="OTHER"/>
+        <result property="attachment" column="ATTACHMENT" jdbcType="OTHER"/>
+        <result property="attachmentOther" column="ATTACHMENT_OTHER" jdbcType="OTHER"/>
+        <result property="retreatReason" column="RETREAT_REASON" jdbcType="OTHER"/>
+        <result property="responseorg" column="RESPONSEORG" jdbcType="OTHER"/>
+        <result property="ywid" column="YWID" jdbcType="OTHER"/>
+        <result property="unifySocietyCode" column="UNIFY_SOCIETY_CODE" jdbcType="OTHER"/>
+        <result property="regionCode1" column="REGION_CODE_1" jdbcType="OTHER"/>
+        <result property="regionCode2" column="REGION_CODE_2" jdbcType="OTHER"/>
+        <result property="acceptDate" column="ACCEPT_DATE" jdbcType="OTHER"/>
+        <result property="acceptPerson" column="ACCEPT_PERSON" jdbcType="OTHER"/>
+        <result property="submitDate" column="SUBMIT_DATE" jdbcType="OTHER"/>
+        <result property="submitUser" column="SUBMIT_USER" jdbcType="OTHER"/>
+        <result property="oldMark" column="OLD_MARK" jdbcType="OTHER"/>
+        <result property="industryOther" column="INDUSTRY_OTHER" jdbcType="OTHER"/>
+        <result property="kindOther" column="KIND_OTHER" jdbcType="OTHER"/>
+        <result property="companyCodeType" column="COMPANY_CODE_TYPE" jdbcType="OTHER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          INSTANCEID, COMPANY_ID, REQUEST_NO, RESPONSE_NO, PASS_NO, NAME, PROVINCE, CITY, DISTRICT, REGIST_ADDR, REGIST_ADDR_POST, CONTACT_ADDR, CONTACT_ADDR_POST, CONTACT_PERSON, CONTACT_PHONE, LONGITUDE, LONGITUDE_HOUR, LONGITUDE_SECOND, LATITUDE, LATITUDE_HOUR, LATITUDE_SECOND, LEGAL_PERSON, LEGAL_PERSON_TYPE, LEGAL_PERSON_ID, LEGAL_PERSON_PHONE, KIND, INDUSTRY_TYPE, NUCLIDE_PRODUCE_ACTIVE, NUCLIDE_SALE_ACTIVE, NUCLIDE_USE_ACTIVE, RADIAL_PRODUCE_ACTIVE, RADIAL_SALE_ACTIVE, RADIAL_USE_ACTIVE, RADIAL_SALE_AND_PRODUCE, NON_SEAL_ACTIVE, NON_SEAL_TYPE, USE_AND_COLLECTION, RADIAL_ORGNAME, RADIAL_ORGCONTACT_PERSON, RADIAL_ORGCONTACT_PHONE, RADIAL_ORGCONTACT_MOBILE, RADIAL_ORGCONTACT_FAX, RADIAL_ORGCONTACT_EMAIL, ORGANIZATION_CODE, REMARK, RESPONSE_STATUS, PERMISSION, IS_DELETE, INSERT_USER, INSERT_DATE, MODIFY_USER, MODIFY_DATE, IS_APPLY, LICENSE_ISSUE_ORGAN, LICENSE_STARTDATE, LICENSE_NO, LICENSE_ENDDATE, LICENCE_ISSUING_AUTHORITY, LICENSE_TYPE, BE_PASS, NOPASS_REASON, REQUEST_SOURCE, REQUEST_SOURCE_ID, MODULE_NUMBER, FAX, EMAIL, COMPANY_TYPE, LICENSE_CONDITION, STATUS, LICENSE_START_DATE, LICENSE_END_DATE, ATTACHMENT, ATTACHMENT_OTHER, RETREAT_REASON, RESPONSEORG, YWID, UNIFY_SOCIETY_CODE, REGION_CODE_1, REGION_CODE_2, ACCEPT_DATE, ACCEPT_PERSON, SUBMIT_DATE, SUBMIT_USER, OLD_MARK, INDUSTRY_OTHER, KIND_OTHER, COMPANY_CODE_TYPE
+        from HEBEI.TT_LR_COMPANY
+        where  = #{}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          INSTANCEID, COMPANY_ID, REQUEST_NO, RESPONSE_NO, PASS_NO, NAME, PROVINCE, CITY, DISTRICT, REGIST_ADDR, REGIST_ADDR_POST, CONTACT_ADDR, CONTACT_ADDR_POST, CONTACT_PERSON, CONTACT_PHONE, LONGITUDE, LONGITUDE_HOUR, LONGITUDE_SECOND, LATITUDE, LATITUDE_HOUR, LATITUDE_SECOND, LEGAL_PERSON, LEGAL_PERSON_TYPE, LEGAL_PERSON_ID, LEGAL_PERSON_PHONE, KIND, INDUSTRY_TYPE, NUCLIDE_PRODUCE_ACTIVE, NUCLIDE_SALE_ACTIVE, NUCLIDE_USE_ACTIVE, RADIAL_PRODUCE_ACTIVE, RADIAL_SALE_ACTIVE, RADIAL_USE_ACTIVE, RADIAL_SALE_AND_PRODUCE, NON_SEAL_ACTIVE, NON_SEAL_TYPE, USE_AND_COLLECTION, RADIAL_ORGNAME, RADIAL_ORGCONTACT_PERSON, RADIAL_ORGCONTACT_PHONE, RADIAL_ORGCONTACT_MOBILE, RADIAL_ORGCONTACT_FAX, RADIAL_ORGCONTACT_EMAIL, ORGANIZATION_CODE, REMARK, RESPONSE_STATUS, PERMISSION, IS_DELETE, INSERT_USER, INSERT_DATE, MODIFY_USER, MODIFY_DATE, IS_APPLY, LICENSE_ISSUE_ORGAN, LICENSE_STARTDATE, LICENSE_NO, LICENSE_ENDDATE, LICENCE_ISSUING_AUTHORITY, LICENSE_TYPE, BE_PASS, NOPASS_REASON, REQUEST_SOURCE, REQUEST_SOURCE_ID, MODULE_NUMBER, FAX, EMAIL, COMPANY_TYPE, LICENSE_CONDITION, STATUS, LICENSE_START_DATE, LICENSE_END_DATE, ATTACHMENT, ATTACHMENT_OTHER, RETREAT_REASON, RESPONSEORG, YWID, UNIFY_SOCIETY_CODE, REGION_CODE_1, REGION_CODE_2, ACCEPT_DATE, ACCEPT_PERSON, SUBMIT_DATE, SUBMIT_USER, OLD_MARK, INDUSTRY_OTHER, KIND_OTHER, COMPANY_CODE_TYPE
+        from HEBEI.TT_LR_COMPANY
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          INSTANCEID, COMPANY_ID, REQUEST_NO, RESPONSE_NO, PASS_NO, NAME, PROVINCE, CITY, DISTRICT, REGIST_ADDR, REGIST_ADDR_POST, CONTACT_ADDR, CONTACT_ADDR_POST, CONTACT_PERSON, CONTACT_PHONE, LONGITUDE, LONGITUDE_HOUR, LONGITUDE_SECOND, LATITUDE, LATITUDE_HOUR, LATITUDE_SECOND, LEGAL_PERSON, LEGAL_PERSON_TYPE, LEGAL_PERSON_ID, LEGAL_PERSON_PHONE, KIND, INDUSTRY_TYPE, NUCLIDE_PRODUCE_ACTIVE, NUCLIDE_SALE_ACTIVE, NUCLIDE_USE_ACTIVE, RADIAL_PRODUCE_ACTIVE, RADIAL_SALE_ACTIVE, RADIAL_USE_ACTIVE, RADIAL_SALE_AND_PRODUCE, NON_SEAL_ACTIVE, NON_SEAL_TYPE, USE_AND_COLLECTION, RADIAL_ORGNAME, RADIAL_ORGCONTACT_PERSON, RADIAL_ORGCONTACT_PHONE, RADIAL_ORGCONTACT_MOBILE, RADIAL_ORGCONTACT_FAX, RADIAL_ORGCONTACT_EMAIL, ORGANIZATION_CODE, REMARK, RESPONSE_STATUS, PERMISSION, IS_DELETE, INSERT_USER, INSERT_DATE, MODIFY_USER, MODIFY_DATE, IS_APPLY, LICENSE_ISSUE_ORGAN, LICENSE_STARTDATE, LICENSE_NO, LICENSE_ENDDATE, LICENCE_ISSUING_AUTHORITY, LICENSE_TYPE, BE_PASS, NOPASS_REASON, REQUEST_SOURCE, REQUEST_SOURCE_ID, MODULE_NUMBER, FAX, EMAIL, COMPANY_TYPE, LICENSE_CONDITION, STATUS, LICENSE_START_DATE, LICENSE_END_DATE, ATTACHMENT, ATTACHMENT_OTHER, RETREAT_REASON, RESPONSEORG, YWID, UNIFY_SOCIETY_CODE, REGION_CODE_1, REGION_CODE_2, ACCEPT_DATE, ACCEPT_PERSON, SUBMIT_DATE, SUBMIT_USER, OLD_MARK, INDUSTRY_OTHER, KIND_OTHER, COMPANY_CODE_TYPE
+        from HEBEI.TT_LR_COMPANY
+        <where>
+            <if test="instanceid != null and instanceid != ''">
+                and INSTANCEID = #{instanceid}
+            </if>
+            <if test="companyId != null">
+                and COMPANY_ID = #{companyId}
+            </if>
+            <if test="requestNo != null">
+                and REQUEST_NO = #{requestNo}
+            </if>
+            <if test="responseNo != null">
+                and RESPONSE_NO = #{responseNo}
+            </if>
+            <if test="passNo != null">
+                and PASS_NO = #{passNo}
+            </if>
+            <if test="name != null">
+                and NAME = #{name}
+            </if>
+            <if test="province != null">
+                and PROVINCE = #{province}
+            </if>
+            <if test="city != null">
+                and CITY = #{city}
+            </if>
+            <if test="district != null">
+                and DISTRICT = #{district}
+            </if>
+            <if test="registAddr != null">
+                and REGIST_ADDR = #{registAddr}
+            </if>
+            <if test="registAddrPost != null">
+                and REGIST_ADDR_POST = #{registAddrPost}
+            </if>
+            <if test="contactAddr != null">
+                and CONTACT_ADDR = #{contactAddr}
+            </if>
+            <if test="contactAddrPost != null">
+                and CONTACT_ADDR_POST = #{contactAddrPost}
+            </if>
+            <if test="contactPerson != null">
+                and CONTACT_PERSON = #{contactPerson}
+            </if>
+            <if test="contactPhone != null">
+                and CONTACT_PHONE = #{contactPhone}
+            </if>
+            <if test="longitude != null">
+                and LONGITUDE = #{longitude}
+            </if>
+            <if test="longitudeHour != null">
+                and LONGITUDE_HOUR = #{longitudeHour}
+            </if>
+            <if test="longitudeSecond != null">
+                and LONGITUDE_SECOND = #{longitudeSecond}
+            </if>
+            <if test="latitude != null">
+                and LATITUDE = #{latitude}
+            </if>
+            <if test="latitudeHour != null">
+                and LATITUDE_HOUR = #{latitudeHour}
+            </if>
+            <if test="latitudeSecond != null">
+                and LATITUDE_SECOND = #{latitudeSecond}
+            </if>
+            <if test="legalPerson != null">
+                and LEGAL_PERSON = #{legalPerson}
+            </if>
+            <if test="legalPersonType != null">
+                and LEGAL_PERSON_TYPE = #{legalPersonType}
+            </if>
+            <if test="legalPersonId != null">
+                and LEGAL_PERSON_ID = #{legalPersonId}
+            </if>
+            <if test="legalPersonPhone != null">
+                and LEGAL_PERSON_PHONE = #{legalPersonPhone}
+            </if>
+            <if test="kind != null">
+                and KIND = #{kind}
+            </if>
+            <if test="industryType != null">
+                and INDUSTRY_TYPE = #{industryType}
+            </if>
+            <if test="nuclideProduceActive != null">
+                and NUCLIDE_PRODUCE_ACTIVE = #{nuclideProduceActive}
+            </if>
+            <if test="nuclideSaleActive != null">
+                and NUCLIDE_SALE_ACTIVE = #{nuclideSaleActive}
+            </if>
+            <if test="nuclideUseActive != null">
+                and NUCLIDE_USE_ACTIVE = #{nuclideUseActive}
+            </if>
+            <if test="radialProduceActive != null">
+                and RADIAL_PRODUCE_ACTIVE = #{radialProduceActive}
+            </if>
+            <if test="radialSaleActive != null">
+                and RADIAL_SALE_ACTIVE = #{radialSaleActive}
+            </if>
+            <if test="radialUseActive != null">
+                and RADIAL_USE_ACTIVE = #{radialUseActive}
+            </if>
+            <if test="radialSaleAndProduce != null">
+                and RADIAL_SALE_AND_PRODUCE = #{radialSaleAndProduce}
+            </if>
+            <if test="nonSealActive != null">
+                and NON_SEAL_ACTIVE = #{nonSealActive}
+            </if>
+            <if test="nonSealType != null">
+                and NON_SEAL_TYPE = #{nonSealType}
+            </if>
+            <if test="useAndCollection != null">
+                and USE_AND_COLLECTION = #{useAndCollection}
+            </if>
+            <if test="radialOrgname != null">
+                and RADIAL_ORGNAME = #{radialOrgname}
+            </if>
+            <if test="radialOrgcontactPerson != null">
+                and RADIAL_ORGCONTACT_PERSON = #{radialOrgcontactPerson}
+            </if>
+            <if test="radialOrgcontactPhone != null">
+                and RADIAL_ORGCONTACT_PHONE = #{radialOrgcontactPhone}
+            </if>
+            <if test="radialOrgcontactMobile != null">
+                and RADIAL_ORGCONTACT_MOBILE = #{radialOrgcontactMobile}
+            </if>
+            <if test="radialOrgcontactFax != null">
+                and RADIAL_ORGCONTACT_FAX = #{radialOrgcontactFax}
+            </if>
+            <if test="radialOrgcontactEmail != null">
+                and RADIAL_ORGCONTACT_EMAIL = #{radialOrgcontactEmail}
+            </if>
+            <if test="organizationCode != null">
+                and ORGANIZATION_CODE = #{organizationCode}
+            </if>
+            <if test="remark != null">
+                and REMARK = #{remark}
+            </if>
+            <if test="responseStatus != null">
+                and RESPONSE_STATUS = #{responseStatus}
+            </if>
+            <if test="permission != null">
+                and PERMISSION = #{permission}
+            </if>
+            <if test="isDelete != null">
+                and IS_DELETE = #{isDelete}
+            </if>
+            <if test="insertUser != null">
+                and INSERT_USER = #{insertUser}
+            </if>
+            <if test="insertDate != null">
+                and INSERT_DATE = #{insertDate}
+            </if>
+            <if test="modifyUser != null">
+                and MODIFY_USER = #{modifyUser}
+            </if>
+            <if test="modifyDate != null">
+                and MODIFY_DATE = #{modifyDate}
+            </if>
+            <if test="isApply != null">
+                and IS_APPLY = #{isApply}
+            </if>
+            <if test="licenseIssueOrgan != null">
+                and LICENSE_ISSUE_ORGAN = #{licenseIssueOrgan}
+            </if>
+            <if test="licenseStartdate != null">
+                and LICENSE_STARTDATE = #{licenseStartdate}
+            </if>
+            <if test="licenseNo != null">
+                and LICENSE_NO = #{licenseNo}
+            </if>
+            <if test="licenseEnddate != null">
+                and LICENSE_ENDDATE = #{licenseEnddate}
+            </if>
+            <if test="licenceIssuingAuthority != null">
+                and LICENCE_ISSUING_AUTHORITY = #{licenceIssuingAuthority}
+            </if>
+            <if test="licenseType != null">
+                and LICENSE_TYPE = #{licenseType}
+            </if>
+            <if test="bePass != null">
+                and BE_PASS = #{bePass}
+            </if>
+            <if test="nopassReason != null">
+                and NOPASS_REASON = #{nopassReason}
+            </if>
+            <if test="requestSource != null">
+                and REQUEST_SOURCE = #{requestSource}
+            </if>
+            <if test="requestSourceId != null">
+                and REQUEST_SOURCE_ID = #{requestSourceId}
+            </if>
+            <if test="moduleNumber != null">
+                and MODULE_NUMBER = #{moduleNumber}
+            </if>
+            <if test="fax != null">
+                and FAX = #{fax}
+            </if>
+            <if test="email != null">
+                and EMAIL = #{email}
+            </if>
+            <if test="companyType != null">
+                and COMPANY_TYPE = #{companyType}
+            </if>
+            <if test="licenseCondition != null">
+                and LICENSE_CONDITION = #{licenseCondition}
+            </if>
+            <if test="status != null">
+                and STATUS = #{status}
+            </if>
+            <if test="licenseStartDate != null">
+                and LICENSE_START_DATE = #{licenseStartDate}
+            </if>
+            <if test="licenseEndDate != null">
+                and LICENSE_END_DATE = #{licenseEndDate}
+            </if>
+            <if test="attachment != null">
+                and ATTACHMENT = #{attachment}
+            </if>
+            <if test="attachmentOther != null">
+                and ATTACHMENT_OTHER = #{attachmentOther}
+            </if>
+            <if test="retreatReason != null">
+                and RETREAT_REASON = #{retreatReason}
+            </if>
+            <if test="responseorg != null">
+                and RESPONSEORG = #{responseorg}
+            </if>
+            <if test="ywid != null">
+                and YWID = #{ywid}
+            </if>
+            <if test="unifySocietyCode != null">
+                and UNIFY_SOCIETY_CODE = #{unifySocietyCode}
+            </if>
+            <if test="regionCode1 != null">
+                and REGION_CODE_1 = #{regionCode1}
+            </if>
+            <if test="regionCode2 != null">
+                and REGION_CODE_2 = #{regionCode2}
+            </if>
+            <if test="acceptDate != null">
+                and ACCEPT_DATE = #{acceptDate}
+            </if>
+            <if test="acceptPerson != null">
+                and ACCEPT_PERSON = #{acceptPerson}
+            </if>
+            <if test="submitDate != null">
+                and SUBMIT_DATE = #{submitDate}
+            </if>
+            <if test="submitUser != null">
+                and SUBMIT_USER = #{submitUser}
+            </if>
+            <if test="oldMark != null">
+                and OLD_MARK = #{oldMark}
+            </if>
+            <if test="industryOther != null">
+                and INDUSTRY_OTHER = #{industryOther}
+            </if>
+            <if test="kindOther != null">
+                and KIND_OTHER = #{kindOther}
+            </if>
+            <if test="companyCodeType != null">
+                and COMPANY_CODE_TYPE = #{companyCodeType}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into HEBEI.TT_LR_COMPANY(INSTANCEID, COMPANY_ID, REQUEST_NO, RESPONSE_NO, PASS_NO, NAME, PROVINCE, CITY, DISTRICT, REGIST_ADDR, REGIST_ADDR_POST, CONTACT_ADDR, CONTACT_ADDR_POST, CONTACT_PERSON, CONTACT_PHONE, LONGITUDE, LONGITUDE_HOUR, LONGITUDE_SECOND, LATITUDE, LATITUDE_HOUR, LATITUDE_SECOND, LEGAL_PERSON, LEGAL_PERSON_TYPE, LEGAL_PERSON_ID, LEGAL_PERSON_PHONE, KIND, INDUSTRY_TYPE, NUCLIDE_PRODUCE_ACTIVE, NUCLIDE_SALE_ACTIVE, NUCLIDE_USE_ACTIVE, RADIAL_PRODUCE_ACTIVE, RADIAL_SALE_ACTIVE, RADIAL_USE_ACTIVE, RADIAL_SALE_AND_PRODUCE, NON_SEAL_ACTIVE, NON_SEAL_TYPE, USE_AND_COLLECTION, RADIAL_ORGNAME, RADIAL_ORGCONTACT_PERSON, RADIAL_ORGCONTACT_PHONE, RADIAL_ORGCONTACT_MOBILE, RADIAL_ORGCONTACT_FAX, RADIAL_ORGCONTACT_EMAIL, ORGANIZATION_CODE, REMARK, RESPONSE_STATUS, PERMISSION, IS_DELETE, INSERT_USER, INSERT_DATE, MODIFY_USER, MODIFY_DATE, IS_APPLY, LICENSE_ISSUE_ORGAN, LICENSE_STARTDATE, LICENSE_NO, LICENSE_ENDDATE, LICENCE_ISSUING_AUTHORITY, LICENSE_TYPE, BE_PASS, NOPASS_REASON, REQUEST_SOURCE, REQUEST_SOURCE_ID, MODULE_NUMBER, FAX, EMAIL, COMPANY_TYPE, LICENSE_CONDITION, STATUS, LICENSE_START_DATE, LICENSE_END_DATE, ATTACHMENT, ATTACHMENT_OTHER, RETREAT_REASON, RESPONSEORG, YWID, UNIFY_SOCIETY_CODE, REGION_CODE_1, REGION_CODE_2, ACCEPT_DATE, ACCEPT_PERSON, SUBMIT_DATE, SUBMIT_USER, OLD_MARK, INDUSTRY_OTHER, KIND_OTHER, COMPANY_CODE_TYPE)
+        values (#{instanceid}, #{companyId}, #{requestNo}, #{responseNo}, #{passNo}, #{name}, #{province}, #{city}, #{district}, #{registAddr}, #{registAddrPost}, #{contactAddr}, #{contactAddrPost}, #{contactPerson}, #{contactPhone}, #{longitude}, #{longitudeHour}, #{longitudeSecond}, #{latitude}, #{latitudeHour}, #{latitudeSecond}, #{legalPerson}, #{legalPersonType}, #{legalPersonId}, #{legalPersonPhone}, #{kind}, #{industryType}, #{nuclideProduceActive}, #{nuclideSaleActive}, #{nuclideUseActive}, #{radialProduceActive}, #{radialSaleActive}, #{radialUseActive}, #{radialSaleAndProduce}, #{nonSealActive}, #{nonSealType}, #{useAndCollection}, #{radialOrgname}, #{radialOrgcontactPerson}, #{radialOrgcontactPhone}, #{radialOrgcontactMobile}, #{radialOrgcontactFax}, #{radialOrgcontactEmail}, #{organizationCode}, #{remark}, #{responseStatus}, #{permission}, #{isDelete}, #{insertUser}, #{insertDate}, #{modifyUser}, #{modifyDate}, #{isApply}, #{licenseIssueOrgan}, #{licenseStartdate}, #{licenseNo}, #{licenseEnddate}, #{licenceIssuingAuthority}, #{licenseType}, #{bePass}, #{nopassReason}, #{requestSource}, #{requestSourceId}, #{moduleNumber}, #{fax}, #{email}, #{companyType}, #{licenseCondition}, #{status}, #{licenseStartDate}, #{licenseEndDate}, #{attachment}, #{attachmentOther}, #{retreatReason}, #{responseorg}, #{ywid}, #{unifySocietyCode}, #{regionCode1}, #{regionCode2}, #{acceptDate}, #{acceptPerson}, #{submitDate}, #{submitUser}, #{oldMark}, #{industryOther}, #{kindOther}, #{companyCodeType})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update HEBEI.TT_LR_COMPANY
+        <set>
+            <if test="instanceid != null and instanceid != ''">
+                INSTANCEID = #{instanceid},
+            </if>
+            <if test="companyId != null">
+                COMPANY_ID = #{companyId},
+            </if>
+            <if test="requestNo != null">
+                REQUEST_NO = #{requestNo},
+            </if>
+            <if test="responseNo != null">
+                RESPONSE_NO = #{responseNo},
+            </if>
+            <if test="passNo != null">
+                PASS_NO = #{passNo},
+            </if>
+            <if test="name != null">
+                NAME = #{name},
+            </if>
+            <if test="province != null">
+                PROVINCE = #{province},
+            </if>
+            <if test="city != null">
+                CITY = #{city},
+            </if>
+            <if test="district != null">
+                DISTRICT = #{district},
+            </if>
+            <if test="registAddr != null">
+                REGIST_ADDR = #{registAddr},
+            </if>
+            <if test="registAddrPost != null">
+                REGIST_ADDR_POST = #{registAddrPost},
+            </if>
+            <if test="contactAddr != null">
+                CONTACT_ADDR = #{contactAddr},
+            </if>
+            <if test="contactAddrPost != null">
+                CONTACT_ADDR_POST = #{contactAddrPost},
+            </if>
+            <if test="contactPerson != null">
+                CONTACT_PERSON = #{contactPerson},
+            </if>
+            <if test="contactPhone != null">
+                CONTACT_PHONE = #{contactPhone},
+            </if>
+            <if test="longitude != null">
+                LONGITUDE = #{longitude},
+            </if>
+            <if test="longitudeHour != null">
+                LONGITUDE_HOUR = #{longitudeHour},
+            </if>
+            <if test="longitudeSecond != null">
+                LONGITUDE_SECOND = #{longitudeSecond},
+            </if>
+            <if test="latitude != null">
+                LATITUDE = #{latitude},
+            </if>
+            <if test="latitudeHour != null">
+                LATITUDE_HOUR = #{latitudeHour},
+            </if>
+            <if test="latitudeSecond != null">
+                LATITUDE_SECOND = #{latitudeSecond},
+            </if>
+            <if test="legalPerson != null">
+                LEGAL_PERSON = #{legalPerson},
+            </if>
+            <if test="legalPersonType != null">
+                LEGAL_PERSON_TYPE = #{legalPersonType},
+            </if>
+            <if test="legalPersonId != null">
+                LEGAL_PERSON_ID = #{legalPersonId},
+            </if>
+            <if test="legalPersonPhone != null">
+                LEGAL_PERSON_PHONE = #{legalPersonPhone},
+            </if>
+            <if test="kind != null">
+                KIND = #{kind},
+            </if>
+            <if test="industryType != null">
+                INDUSTRY_TYPE = #{industryType},
+            </if>
+            <if test="nuclideProduceActive != null">
+                NUCLIDE_PRODUCE_ACTIVE = #{nuclideProduceActive},
+            </if>
+            <if test="nuclideSaleActive != null">
+                NUCLIDE_SALE_ACTIVE = #{nuclideSaleActive},
+            </if>
+            <if test="nuclideUseActive != null">
+                NUCLIDE_USE_ACTIVE = #{nuclideUseActive},
+            </if>
+            <if test="radialProduceActive != null">
+                RADIAL_PRODUCE_ACTIVE = #{radialProduceActive},
+            </if>
+            <if test="radialSaleActive != null">
+                RADIAL_SALE_ACTIVE = #{radialSaleActive},
+            </if>
+            <if test="radialUseActive != null">
+                RADIAL_USE_ACTIVE = #{radialUseActive},
+            </if>
+            <if test="radialSaleAndProduce != null">
+                RADIAL_SALE_AND_PRODUCE = #{radialSaleAndProduce},
+            </if>
+            <if test="nonSealActive != null">
+                NON_SEAL_ACTIVE = #{nonSealActive},
+            </if>
+            <if test="nonSealType != null">
+                NON_SEAL_TYPE = #{nonSealType},
+            </if>
+            <if test="useAndCollection != null">
+                USE_AND_COLLECTION = #{useAndCollection},
+            </if>
+            <if test="radialOrgname != null">
+                RADIAL_ORGNAME = #{radialOrgname},
+            </if>
+            <if test="radialOrgcontactPerson != null">
+                RADIAL_ORGCONTACT_PERSON = #{radialOrgcontactPerson},
+            </if>
+            <if test="radialOrgcontactPhone != null">
+                RADIAL_ORGCONTACT_PHONE = #{radialOrgcontactPhone},
+            </if>
+            <if test="radialOrgcontactMobile != null">
+                RADIAL_ORGCONTACT_MOBILE = #{radialOrgcontactMobile},
+            </if>
+            <if test="radialOrgcontactFax != null">
+                RADIAL_ORGCONTACT_FAX = #{radialOrgcontactFax},
+            </if>
+            <if test="radialOrgcontactEmail != null">
+                RADIAL_ORGCONTACT_EMAIL = #{radialOrgcontactEmail},
+            </if>
+            <if test="organizationCode != null">
+                ORGANIZATION_CODE = #{organizationCode},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark},
+            </if>
+            <if test="responseStatus != null">
+                RESPONSE_STATUS = #{responseStatus},
+            </if>
+            <if test="permission != null">
+                PERMISSION = #{permission},
+            </if>
+            <if test="isDelete != null">
+                IS_DELETE = #{isDelete},
+            </if>
+            <if test="insertUser != null">
+                INSERT_USER = #{insertUser},
+            </if>
+            <if test="insertDate != null">
+                INSERT_DATE = #{insertDate},
+            </if>
+            <if test="modifyUser != null">
+                MODIFY_USER = #{modifyUser},
+            </if>
+            <if test="modifyDate != null">
+                MODIFY_DATE = #{modifyDate},
+            </if>
+            <if test="isApply != null">
+                IS_APPLY = #{isApply},
+            </if>
+            <if test="licenseIssueOrgan != null">
+                LICENSE_ISSUE_ORGAN = #{licenseIssueOrgan},
+            </if>
+            <if test="licenseStartdate != null">
+                LICENSE_STARTDATE = #{licenseStartdate},
+            </if>
+            <if test="licenseNo != null">
+                LICENSE_NO = #{licenseNo},
+            </if>
+            <if test="licenseEnddate != null">
+                LICENSE_ENDDATE = #{licenseEnddate},
+            </if>
+            <if test="licenceIssuingAuthority != null">
+                LICENCE_ISSUING_AUTHORITY = #{licenceIssuingAuthority},
+            </if>
+            <if test="licenseType != null">
+                LICENSE_TYPE = #{licenseType},
+            </if>
+            <if test="bePass != null">
+                BE_PASS = #{bePass},
+            </if>
+            <if test="nopassReason != null">
+                NOPASS_REASON = #{nopassReason},
+            </if>
+            <if test="requestSource != null">
+                REQUEST_SOURCE = #{requestSource},
+            </if>
+            <if test="requestSourceId != null">
+                REQUEST_SOURCE_ID = #{requestSourceId},
+            </if>
+            <if test="moduleNumber != null">
+                MODULE_NUMBER = #{moduleNumber},
+            </if>
+            <if test="fax != null">
+                FAX = #{fax},
+            </if>
+            <if test="email != null">
+                EMAIL = #{email},
+            </if>
+            <if test="companyType != null">
+                COMPANY_TYPE = #{companyType},
+            </if>
+            <if test="licenseCondition != null">
+                LICENSE_CONDITION = #{licenseCondition},
+            </if>
+            <if test="status != null">
+                STATUS = #{status},
+            </if>
+            <if test="licenseStartDate != null">
+                LICENSE_START_DATE = #{licenseStartDate},
+            </if>
+            <if test="licenseEndDate != null">
+                LICENSE_END_DATE = #{licenseEndDate},
+            </if>
+            <if test="attachment != null">
+                ATTACHMENT = #{attachment},
+            </if>
+            <if test="attachmentOther != null">
+                ATTACHMENT_OTHER = #{attachmentOther},
+            </if>
+            <if test="retreatReason != null">
+                RETREAT_REASON = #{retreatReason},
+            </if>
+            <if test="responseorg != null">
+                RESPONSEORG = #{responseorg},
+            </if>
+            <if test="ywid != null">
+                YWID = #{ywid},
+            </if>
+            <if test="unifySocietyCode != null">
+                UNIFY_SOCIETY_CODE = #{unifySocietyCode},
+            </if>
+            <if test="regionCode1 != null">
+                REGION_CODE_1 = #{regionCode1},
+            </if>
+            <if test="regionCode2 != null">
+                REGION_CODE_2 = #{regionCode2},
+            </if>
+            <if test="acceptDate != null">
+                ACCEPT_DATE = #{acceptDate},
+            </if>
+            <if test="acceptPerson != null">
+                ACCEPT_PERSON = #{acceptPerson},
+            </if>
+            <if test="submitDate != null">
+                SUBMIT_DATE = #{submitDate},
+            </if>
+            <if test="submitUser != null">
+                SUBMIT_USER = #{submitUser},
+            </if>
+            <if test="oldMark != null">
+                OLD_MARK = #{oldMark},
+            </if>
+            <if test="industryOther != null">
+                INDUSTRY_OTHER = #{industryOther},
+            </if>
+            <if test="kindOther != null">
+                KIND_OTHER = #{kindOther},
+            </if>
+            <if test="companyCodeType != null">
+                COMPANY_CODE_TYPE = #{companyCodeType},
+            </if>
+        </set>
+        where  = #{}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from HEBEI.TT_LR_COMPANY where  = #{}
+    </delete>
+
+</mapper>
