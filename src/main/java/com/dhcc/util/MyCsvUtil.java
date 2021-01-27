@@ -64,13 +64,16 @@ public class MyCsvUtil {
     }
 
     public static void main(String[] args) {
-        writFile("123", "1");
+//        String str="INSERT INTO `radial_base_info`(`id`, `gmt_create`, `gmt_modified`, `CATEGORY`, `CITY`, `CODE`, `OLD_COMPANY_ID`, `COMPANY_ID`, `COMPANY_NAME`, `COUNTRY`, `DISTRICT`, `INDUSTRY_TYPE`, `KIND`, `LEAVE_FACTORY_ACTIVITY`, `LEAVE_FACTORY_DATE`, `LICENSE_NO`, `MANUFACTURE`, `NUCLIDE`, `PROVINCE`, `REMARK`, `STATUS`, `TAB`, `UPDATE_DATE`, `USE_PROVINCE`, `USE_TYPE`, `INSTANCEID`, `OPERATE_TYPE`, `USER_ID`, `BUSINESS_ID`, `CN_STATUS`, `RECYCLE_CODE`, `BE_END_STATUS`, `ISHISTORY`, `SPECIAL_FLAG`, `type`, `backup1`, `backup2`) VALUES" +
+//                " (255295, '2020-06-17 20:50:41', '2020-06-17 20:50:41', '3', '廊坊市', 'GB87AB099603', 'old_689BB5E8558E106CE66228FC7AC49297_82647', '', '中国石油集团测井有限公司华北事业部廊坊测井项目部', '英国', '广阳区', '能源矿产地质勘查', '企业', '185000000000', '1987-04-28 00:00:00', '冀环辐证[S0416]', NULL, 'Am-241/Be', '河北省', NULL, '2', 'ZC021', '2018-03-30 11:07:02', NULL, '测井仪', '38B8799D53F19AD3B551E75F083D75A3', '放射源转让', 'fushechu1', '40288b955e523157015e5ee93baa1bc2', '使用', NULL, NULL, 1, NULL, 'ts', NULL, NULL);";
+
+        合并excel();
     }
 
 
-    public static void 合并excel(String[] args) {
+    public static void 合并excel() {
 //        多个excel存放的目录
-        String excelFileDir = "C:\\Users\\50196\\Documents\\WeChat Files\\nannan501968797\\FileStorage\\File\\2020-08\\放射源统计\\放射源统计";
+        String excelFileDir = "C:\\Users\\50196\\Documents\\WeChat Files\\nannan501968797\\FileStorage\\File\\2020-09\\124枚高风险移动放射源在线监控2020.09.01(1)\\124枚高风险移动放射源在线监控2020.09.01";
         String outPutDir = "D:\\";
         List<String> list = FileUtil.listFileNames(excelFileDir);
         List<String> filePaths = new ArrayList<>();
